@@ -3,13 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework 7</title>
+    <title>Nobel Interactive</title>
     <script src="https://d3js.org/d3.v7.min.js"></script> <!-- Load D3 library -->
     <link rel="stylesheet" href="style.css"> <!-- Connect to style.css for styles -->
 </head>
 <body>
-    <h1>Nobel Laureates Multi-Line Demo</h1>
-    <svg id="lineChart" width="800" height="400"></svg> <!-- Line chart -->
+    <h1>Nobel Laureates in D3: Interactivity Demo</h1>
+    <!-- Add interactivity -->
+    <div class="widgetBar">
+        <!-- Trendline Toggle -->
+        <div class="widget">
+        <label for="trendline-toggle">Show Trendline</label>
+        <input type="checkbox" id="trendline-toggle">
+    </div>
+
+        <!-- Category Type Dropdown -->
+        <div class="widget">
+            <label for="categorySelect">Select category type:</label>
+
+            <div class="select-container">
+                <select id="categorySelect">
+                    <option value="STEM">STEM</option>
+                    <option value="Non-STEM">Non-STEM</option>
+                </select>
+            </div>
+        </div>
+</div>
+
+    <!-- Create chart -->
+    <div id="lineChart"></div>
+
+
     <script src="main.js"></script>
 </body>
 </html>
+

@@ -1,15 +1,127 @@
-/* Styles for the axis labels (x and y labels) */
-.title {
+/* General Layout Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Arial', sans-serif;
-    font-size: 16px;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light background for the page */
+}
+
+/* Chart Container */
+#lineChart {
+    display: block;
+    margin: 20px 0; /* Add vertical spacing */
+    width: 800px; /* Fixed width to match SVG width */
+    height: auto;
+    background-color: #fff; /* White background for the chart */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Widget Bar (Horizontal Layout) */
+.widgetBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* Align widgets to the left */
+    width: 800px; /* Match the width of the chart for consistency */
+    margin: 20px 0; /* Add vertical spacing */
+    gap: 16px; /* Space between widgets */
+    padding: 10px;
+    background-color: #fff; /* White background for widgets container */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual Widget */
+.widget {
+    flex: 1; /* Widgets take equal horizontal space */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    min-width: 0; /* Prevent overflow issues */
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+}
+
+
+/* Styling for the dropdown container */
+.widget label {
     font-weight: bold;
-    fill: #333; /* Dark color for the title */
+    margin-bottom: 8px; /* Add spacing between label and dropdown */
+    display: block;
+    color: #333; /* Darker label color for better contrast */
+    font-size: 14px;
+}
+
+/* Dropdown container styling */
+.select-container {
+    position: relative; /* Enables positioning the caret */
+    display: inline-block;
+    width: 100%; /* Full width of the widget */
+}
+
+.select-container select {
+    width: 100%; /* Dropdown takes up full container width */
+    padding: 10px;
+    padding-right: 30px; /* Space for the caret */
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    appearance: none; /* Remove default browser styles */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Custom caret styling */
+.select-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Position caret on the right */
+    transform: translateY(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #666; /* Caret color */
+    pointer-events: none; /* Prevent interaction */
+}
+
+/* Hover and focus styles for the dropdown */
+.select-container select:hover,
+.select-container select:focus {
+    border-color: #007BFF; /* Highlight border on hover/focus */
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* Axis label styling */
+.axis-label {
+    font-size: 12px;
+    fill: #666;
     text-anchor: middle;
 }
 
-.axis-label {
-    font-family: 'Arial', sans-serif; /* Same font as the title */
-    font-size: 12px; /* Smaller font size for axis labels */
-    fill: #666; /* A lighter gray for axis labels */
-    text-anchor: middle; /* Center the text */
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .widgetBar {
+        flex-direction: column; /* Stack widgets vertically on small screens */
+        gap: 10px;
+        width: 100%; /* Full-width on smaller screens */
+    }
+
+    #lineChart {
+        width: 100%; /* Responsive chart width */
+    }
+
+    .widget {
+        padding: 12px;
+    }
 }
